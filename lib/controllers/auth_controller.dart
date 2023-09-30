@@ -3,11 +3,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:travel_agency/constant/constant.dart';
-import 'package:travel_agency/models/user_model.dart';
-import 'package:travel_agency/views/auth/login_screen.dart';
-import 'package:travel_agency/views/screens/home_screen.dart';
+
+import '../constant/constant.dart';
+import '../models/user_model.dart';
+import '../views/auth/login_screen.dart';
+import '../views/screens/home_screen.dart';
 
 class AuthController extends GetxController {
   //for button loading indicator
@@ -31,7 +31,7 @@ class AuthController extends GetxController {
           email: email,
           password: password,
         );
-         Get.to(() => HomeScreen());
+        Get.to(() => HomeScreen());
         var authCredential = userCredential.user;
         if (authCredential!.uid.isNotEmpty) {
           Fluttertoast.showToast(msg: 'Registration Successfull');

@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/constant/constant.dart';
+
+import '../constant/constant.dart';
 
 class ProfileController extends GetxController {
   var nameController = TextEditingController();
@@ -13,10 +14,10 @@ class ProfileController extends GetxController {
   final Rx<Map<String, dynamic>> _user = Rx<Map<String, dynamic>>({});
   Map<String, dynamic> get user => _user.value;
 
-  getUserData({required uid})async{
+  getUserData({required uid}) async {
     //for user data
     DocumentSnapshot userDoc =
-    await firestore.collection('users').doc(uid).get();
+        await firestore.collection('users').doc(uid).get();
     final userData = userDoc.data()! as dynamic;
     String name = userData['name'];
     String email = userData['email'];
