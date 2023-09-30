@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "749853884352",
+    "project_id": "flutter-tour-app-dae95",
+    "storage_bucket": "flutter-tour-app-dae95.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749853884352:android:0ab9aa6b49a10ea6a25225",
+        "android_client_info": {
+          "package_name": "com.example.flutter_tour_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbVWkmu-BkoFX-XOUMrlG2XpCt3gh8t4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
