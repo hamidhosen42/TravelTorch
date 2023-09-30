@@ -1,18 +1,21 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:flutter_tour_app/views/screens/splash_screen.dart';
 
-import 'Theme/app_theme.dart';
-import 'views/splash_screen.dart';
+import 'views/drawer_page/languages/components/app_languages.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-
   runApp(const MyApp());
 }
 
@@ -22,15 +25,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(428, 926),
+      designSize: Size(428, 926),
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
-          title: 'Admin app',
+          title: 'Travel Agency',
+          translations: AppLanguages(),
+          locale: Locale('en', 'US'),
+          fallbackLocale: Locale('en', 'US'),
           debugShowCheckedModeBanner: false,
-          theme: AppTheme().lightTheme,
-          darkTheme: AppTheme().darkTheme,
-          themeMode: ThemeMode.system,
-          home: const SplashScreen(),
+          theme: ThemeData(
+            appBarTheme: AppBarTheme(
+              elevation: 0,
+              color: Colors.transparent,
+              iconTheme: IconThemeData(color: Colors.black),
+              titleTextStyle: TextStyle(color: Colors.black,fontSize: 20.sp)
+            )
+          ),
+          home: SplashScreen(),
         );
       },
     );
