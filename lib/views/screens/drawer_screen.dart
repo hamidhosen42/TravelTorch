@@ -3,13 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/constant/app_strings.dart';
-import 'package:travel_agency/controllers/language_controller.dart';
-import 'package:travel_agency/views/drawer_page/faq_screen.dart';
-import 'package:travel_agency/views/drawer_page/privacy_policy_screen.dart';
-import 'package:travel_agency/views/drawer_page/settings/settings_screen.dart';
-import 'package:travel_agency/views/drawer_page/support_screen.dart';
-import 'package:travel_agency/views/widgets/drawer_item.dart';
+import '../../controllers/language_controller.dart';
+import '../drawer_page/faq_screen.dart';
+import '../drawer_page/privacy_policy_screen.dart';
+import '../drawer_page/settings/settings_screen.dart';
+import '../drawer_page/support_screen.dart';
+import '../widgets/drawer_item.dart';
 
 class DrawerScreen extends StatelessWidget {
   DrawerScreen({Key? key}) : super(key: key);

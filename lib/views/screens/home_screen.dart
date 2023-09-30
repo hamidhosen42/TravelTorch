@@ -9,10 +9,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:travel_agency/constant/constant.dart';
-import 'package:travel_agency/controllers/profile_controller.dart';
-import 'package:travel_agency/views/bottom_nav_controller/pages/bottom_nav_controller_screen.dart';
-import 'package:travel_agency/views/screens/drawer_screen.dart';
+
+import '../../constant/constant.dart';
+import '../../controllers/profile_controller.dart';
+import '../bottom_nav_controller/pages/bottom_nav_controller_screen.dart';
+import 'drawer_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

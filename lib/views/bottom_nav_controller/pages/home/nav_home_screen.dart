@@ -6,9 +6,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/services/firestore_services.dart';
-import 'package:travel_agency/views/widgets/nav_home_categories.dart';
 
+import '../../../../services/firestore_services.dart';
+import '../../../widgets/nav_home_categories.dart';
 import 'details_screen.dart';
 import 'see_all_screen.dart';
 import 'see_all_screen_2.dart';
@@ -97,6 +97,8 @@ class _NavHomeScreenState extends State<NavHomeScreen> {
                     return Text("Error");
                   }
                   if (snapshot.hasData) {
+
+                    print(snapshot.data );
                     List<Map> items = parseData(snapshot.data);
                     return forYou(items);
                   }

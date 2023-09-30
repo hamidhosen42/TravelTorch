@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/views/widgets/support_feild.dart';
+
+import '../widgets/support_feild.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});

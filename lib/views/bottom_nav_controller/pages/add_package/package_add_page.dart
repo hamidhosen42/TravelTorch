@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables
 
 import 'dart:io';
 
@@ -9,13 +9,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:travel_agency/constant/app_colors.dart';
-import 'package:travel_agency/constant/constant.dart';
-import 'package:travel_agency/views/widgets/custom_text_field.dart';
-import 'package:travel_agency/views/widgets/violetButton.dart';
 
+import '../../../../constant/app_colors.dart';
+import '../../../../constant/constant.dart';
 import '../../../../controllers/profile_controller.dart';
 import '../../../screens/home_screen.dart';
+import '../../../widgets/custom_text_field.dart';
+import '../../../widgets/violetButton.dart';
 
 class PackageAddPage extends StatefulWidget {
   const PackageAddPage({Key? key}) : super(key: key);

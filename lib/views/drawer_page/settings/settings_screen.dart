@@ -3,12 +3,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tour_app/views/drawer_page/settings/profile_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/constant/constant.dart';
-import 'package:travel_agency/controllers/auth_controller.dart';
-import 'package:travel_agency/services/firestore_services.dart';
-import 'package:travel_agency/views/drawer_page/settings/profile_screen.dart';
+
+import '../../../constant/constant.dart';
+import '../../../controllers/auth_controller.dart';
+import '../../../services/firestore_services.dart';
 
 class SettingScreen extends StatelessWidget {
   SettingScreen({Key? key}) : super(key: key);

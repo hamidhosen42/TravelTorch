@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/views/widgets/details_heading_description.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../../../widgets/details_heading_description.dart';
 
 class DetailsScreen extends StatefulWidget {
   final Map detailsData;

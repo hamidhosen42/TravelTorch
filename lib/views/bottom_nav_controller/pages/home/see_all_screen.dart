@@ -1,14 +1,14 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_typing_uninitialized_variables, unused_field
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/constant/constant.dart';
-import 'package:travel_agency/services/firestore_services.dart';
-import 'package:travel_agency/views/bottom_nav_controller/pages/home/nav_home_screen.dart';
 
+import '../../../../constant/constant.dart';
+import '../../../../services/firestore_services.dart';
 import 'details_screen.dart';
+import 'nav_home_screen.dart';
 
 class SeeAllScreen extends StatefulWidget {
   var compare;

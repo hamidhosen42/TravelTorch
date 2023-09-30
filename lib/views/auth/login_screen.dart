@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:travel_agency/constant/app_colors.dart';
-import 'package:travel_agency/controllers/auth_controller.dart';
-import 'package:travel_agency/views/auth/signup_screen.dart';
-import 'package:travel_agency/views/styles.dart';
-import 'package:travel_agency/views/widgets/violetButton.dart';
 
+import '../../constant/app_colors.dart';
+import '../../controllers/auth_controller.dart';
 import '../../controllers/text_field_controller.dart';
+import '../styles.dart';
+import '../widgets/violetButton.dart';
+import 'signup_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   @override

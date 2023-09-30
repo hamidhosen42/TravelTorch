@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/constant/constant.dart';
-import 'package:travel_agency/controllers/profile_controller.dart';
-import 'package:travel_agency/views/styles.dart';
-import 'package:travel_agency/views/widgets/violetButton.dart';
+
+import '../../../constant/constant.dart';
+import '../../../controllers/profile_controller.dart';
+import '../../styles.dart';
+import '../../widgets/violetButton.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);

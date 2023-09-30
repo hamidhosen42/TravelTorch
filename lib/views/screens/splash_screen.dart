@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:travel_agency/constant/constant.dart';
-import 'package:travel_agency/views/auth/login_screen.dart';
-import 'package:travel_agency/views/screens/home_screen.dart';
+
+import '../../constant/constant.dart';
+import '../auth/login_screen.dart';
+import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

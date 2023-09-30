@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:travel_agency/constant/app_colors.dart';
+
+import '../../constant/app_colors.dart';
 
 class VioletButton extends StatelessWidget {
   bool isLoading;
