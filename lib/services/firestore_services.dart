@@ -1,4 +1,5 @@
-import 'package:travel_agency/constant/constant.dart';
+
+import '../constant/constant.dart';
 
 class FirestoreServices {
   //for get for you section data
