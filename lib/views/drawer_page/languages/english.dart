@@ -1,4 +1,4 @@
-import '../../../constant/app_strings.dart';
+import 'package:travel_agency/constant/app_strings.dart';
 
 Map<String, String> english = {
   //drawer screen

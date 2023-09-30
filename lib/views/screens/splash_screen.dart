@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
-import '../../constant/constant.dart';
-import '../auth/login_screen.dart';
+import 'package:travel_agency/constant/constant.dart';
+import 'package:travel_agency/views/auth/login_screen.dart';
+import 'package:travel_agency/views/screens/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,15 +18,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      firebaseAuth.authStateChanges().listen((event) {
-        if (event == null && mounted) {
-          Get.offAll(() => SignInScreen());
-        } else {
-          // Get.offAll(()=> HomeScreen());
+    Future.delayed(
+      const Duration(seconds: 3),
+        (){
+        firebaseAuth.authStateChanges().listen((event) {
+          if(event == null && mounted){
+            Get.offAll(()=> SignInScreen());
+          }else{
+            Get.offAll(()=> HomeScreen());
+          }
+        });
         }
-      });
-    });
+    );
   }
 
   @override
@@ -50,14 +53,12 @@ class _SplashScreenState extends State<SplashScreen> {
                 children: [
                   Text(
                     "Travello",
-                    style:
-                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 5.h),
                   Text(
                     "A dew drops on a grain of rice",
-                    style:
-                        TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),

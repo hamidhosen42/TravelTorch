@@ -3,8 +3,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:travel_agency/constant/constant.dart';
+import 'package:travel_agency/models/user_model.dart';
+import 'package:travel_agency/views/auth/login_screen.dart';
+import 'package:travel_agency/views/screens/home_screen.dart';
 
-import '../constant/constant.dart';
 class AuthController extends GetxController {
   //for button loading indicator
   var isLoading = false.obs;

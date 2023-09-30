@@ -3,14 +3,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_tour_app/views/auth/login_screen.dart';
 import 'package:get/get.dart';
+import 'package:travel_agency/constant/app_colors.dart';
+import 'package:travel_agency/constant/constant.dart';
+import 'package:travel_agency/controllers/auth_controller.dart';
+import 'package:travel_agency/views/auth/login_screen.dart';
+import 'package:travel_agency/views/styles.dart';
+import 'package:travel_agency/views/widgets/violetButton.dart';
 
-import '../../constant/app_colors.dart';
-import '../../controllers/auth_controller.dart';
 import '../../controllers/text_field_controller.dart';
-import '../styles.dart';
-import '../widgets/violetButton.dart';
 
 class SignUpScreen extends StatelessWidget {
   TextEditingController _nameController = TextEditingController();
@@ -57,7 +58,9 @@ class SignUpScreen extends StatelessWidget {
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-                SizedBox(height: 80.h),
+                SizedBox(
+                  height: 80.h
+                ),
                 TextFormField(
                   controller: _nameController,
                   keyboardType: TextInputType.emailAddress,
@@ -81,8 +84,8 @@ class SignUpScreen extends StatelessWidget {
                               : Icons.visibility_off,
                         ),
                         onPressed: () {
-                          _controller.isPasswordHiden.value =
-                              !_controller.isPasswordHiden.value;
+                          _controller.isPasswordHiden.value =!
+                              _controller.isPasswordHiden.value;
                         },
                       ),
                     ),
