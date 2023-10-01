@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables
 
 import 'dart:io';
 
@@ -76,7 +76,8 @@ class _PackageAddPageState extends State<PackageAddPage> {
         // upload to database
         uploadToDB();
       } else {
-        Fluttertoast.showToast(msg: "Something is wrong.");
+  Get.snackbar("Error", "Something is wrong!",
+              backgroundColor: Colors.red, colorText: Colors.white);
       }
     } catch (e) {
       Fluttertoast.showToast(msg: "Failed");
@@ -120,51 +121,50 @@ class _PackageAddPageState extends State<PackageAddPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 10.h),
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 30.h),
-                Text(
-                  "adPackageMessage".tr,
-                  style: TextStyle(
-                    fontSize: 24.sp,
-                  ),
-                ),
                 SizedBox(height: 20.h),
                 customTextField(
-                  "ownerName".tr,
+                  "Owner Name".tr,
                   nameController,
+                  TextInputType.text,
                   onlyRead: true,
                 ),
                 customTextField(
-                  "phoneNumber".tr,
+                  "Phone Number".tr,
                   phoneController,
+                             TextInputType.number,
                   onlyRead: true,
                 ),
                 customTextField(
-                  "cost".tr,
+                  "Cost".tr,
                   _costController,
+                             TextInputType.number,
                   onlyRead: false,
                 ),
                 customTextField(
-                  "destination".tr,
+                  "Destination".tr,
                   _destinationController,
+                             TextInputType.text,
                   onlyRead: false,
                 ),
                 customTextField(
-                  "description".tr,
+                  "Description".tr,
                   _descriptionController,
+                             TextInputType.text,
                   onlyRead: false,
                 ),
                 customTextField(
-                  "facilites".tr,
+                  "Facilites".tr,
                   _facilityController,
+                             TextInputType.text,
                   maxline: 4,
                   onlyRead: false,
                 ),
                 Text(
-                  "selectImage".tr,
+                  "Select Image".tr,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 18.sp,
@@ -188,7 +188,7 @@ class _PackageAddPageState extends State<PackageAddPage> {
                 ),
                 SizedBox(height: 10.h),
                 SizedBox(
-                  height: 150,
+                height: multipleImages?.length != null ? 100 : 0,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: multipleImages?.length ?? 0,
@@ -210,7 +210,7 @@ class _PackageAddPageState extends State<PackageAddPage> {
                     },
                   ),
                 ),
-                SizedBox(height: 50.h),
+                SizedBox(height: 10.h),
                 Obx(() {
                   return VioletButton(
                     isLoading: isLoading.value,

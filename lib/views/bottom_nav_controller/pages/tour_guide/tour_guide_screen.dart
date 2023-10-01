@@ -20,21 +20,21 @@ class SelfTourScreen extends StatelessWidget {
         child: StreamBuilder(
           stream: FirestoreServices.tourGuidePackage(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            if(!snapshot.hasData){
+            if (!snapshot.hasData) {
               return Center(child: CircularProgressIndicator());
-            }else{
+            } else {
               var data = snapshot.data!.docs;
               return GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 0.8
-                ),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: 0.8),
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   return InkWell(
-                    onTap: ()=> Get.to(()=>SelfTourDetailsScreen(data: data[index])),
+                    onTap: () =>
+                        Get.to(() => SelfTourDetailsScreen(data: data[index])),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.grey[500],
@@ -48,20 +48,20 @@ class SelfTourScreen extends StatelessWidget {
                               topLeft: Radius.circular(7.r),
                               topRight: Radius.circular(7.r),
                             ),
-                            child:CachedNetworkImage(
-                            imageUrl: data[index]['gallery_img'][0],
-                             fit: BoxFit.fill,
-                            height: 145.h,
+                            child: CachedNetworkImage(
+                              imageUrl: data[index]['gallery_img'][0],
+                              fit: BoxFit.fill,
+                              height: 145.h,
                               width: double.infinity,
-                            filterQuality: FilterQuality.high,
-                            placeholder: (context, url) => const Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.blue,
+                              filterQuality: FilterQuality.high,
+                              placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.blue,
+                                ),
                               ),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
                             ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                          ),
                           ),
                           Text(
                             data[index]['destination'],
@@ -73,8 +73,8 @@ class SelfTourScreen extends StatelessWidget {
                           ),
                           Text(
                             "${data[index]['cost'].toString()} BD",
-                            style:
-                            TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
+                            style: TextStyle(
+                                fontSize: 20.sp, fontWeight: FontWeight.w400),
                           ),
                           SizedBox(height: 5.h),
                         ],
