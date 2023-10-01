@@ -1,6 +1,13 @@
-class AppStrings {
-  static const appName = 'Travello';
-}
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+
+var firebaseAuth = FirebaseAuth.instance;
+var firestore = FirebaseFirestore.instance;
+var firebaseStorage = FirebaseStorage.instance;
+
+String appName = "TravelTorch Admin app";
 
 //FAQ english strings
 const faqTitle1 = "How I can reached you";

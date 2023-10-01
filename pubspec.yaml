@@ -50,6 +50,8 @@ dependencies:
   velocity_x: 
   internet_connection_checker: 
   connectivity_plus: 
+  google_fonts:
+  cached_network_image: 
 
 dev_dependencies:
   flutter_test:
