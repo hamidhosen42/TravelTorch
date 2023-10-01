@@ -1,33 +1,37 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable
+// ignore_for_file: must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_tour_app/constant/app_colors.dart';
+
+import '../../constant/app_colors.dart';
 
 class VioletButton extends StatelessWidget {
   bool isLoading;
   String title;
   final VoidCallback onAction;
   VioletButton(
-      {required this.isLoading, required this.title, required this.onAction});
+      {super.key,
+      required this.isLoading,
+      required this.title,
+      required this.onAction});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onAction,
       child: Container(
-        height: 48.h,
+        height: 60.h,
         decoration: BoxDecoration(
           color: AppColors.violetColor,
-          borderRadius: BorderRadius.all(Radius.circular(5.r)),
+          borderRadius: BorderRadius.all(Radius.circular(10.r)),
         ),
         child: isLoading == false
             ? Center(
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 17.sp,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.sp,
                     color: Colors.white,
                   ),
                 ),
@@ -39,13 +43,13 @@ class VioletButton extends StatelessWidget {
                     "Please Wait",
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 17.sp,
+                      fontSize: 18.sp,
                       color: Colors.white,
                     ),
                   ),
                   SizedBox(width: 10.w),
                   Transform.scale(
-                    scale: 0.4,
+                    scale: 0.5,
                     child: CircularProgressIndicator(color: Colors.white),
                   ),
                 ],

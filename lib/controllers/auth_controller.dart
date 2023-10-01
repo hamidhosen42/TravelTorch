@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter_tour_app/constant/constant.dart';
@@ -66,7 +67,7 @@ class AuthController extends GetxController {
     }
   }
 
-  //for user login
+  //!-------------------for user login----------
   Future userLogin({required String email, required String password}) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
@@ -75,23 +76,27 @@ class AuthController extends GetxController {
 
         var authCredential = userCredential.user;
         if (authCredential!.uid.isNotEmpty) {
-          Fluttertoast.showToast(msg: 'Login Successfull');
-
+          Get.snackbar("Successful", "successfully Login");
           Get.to(() => HomeScreen());
         } else {
-          Fluttertoast.showToast(msg: 'Something is wrong!');
+          Get.snackbar("Error", "Something is wrong!",
+              backgroundColor: Colors.red, colorText: Colors.white);
         }
       } else {
-        Fluttertoast.showToast(msg: "Please enter all the field");
+        Get.snackbar("Error", "Please enter all the field!",
+            backgroundColor: Colors.red, colorText: Colors.white);
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        Fluttertoast.showToast(msg: 'No user found for that email.');
+        Get.snackbar("Error", "No user found for that email.",
+            backgroundColor: Colors.red, colorText: Colors.white);
       } else if (e.code == 'wrong-password') {
-        Fluttertoast.showToast(msg: 'Wrong password provided for that user.');
+        Get.snackbar("Error", "Wrong password provided for that user.",
+            backgroundColor: Colors.red, colorText: Colors.white);
       }
     } catch (e) {
-      Fluttertoast.showToast(msg: 'Error is: $e');
+      Get.snackbar("Error", "Error is: $e",
+          backgroundColor: Colors.red, colorText: Colors.white);
     }
   }
 
