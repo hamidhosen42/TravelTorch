@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:flutter_tour_app/constant/app_strings.dart';
 import 'package:flutter_tour_app/controllers/language_controller.dart';
 import 'package:flutter_tour_app/views/drawer_page/faq_screen.dart';
 import 'package:flutter_tour_app/views/drawer_page/privacy_policy_screen.dart';

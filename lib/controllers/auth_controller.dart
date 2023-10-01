@@ -3,7 +3,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:flutter_tour_app/constant/constant.dart';
 import 'package:flutter_tour_app/models/user_model.dart';
 import 'package:flutter_tour_app/views/auth/login_screen.dart';

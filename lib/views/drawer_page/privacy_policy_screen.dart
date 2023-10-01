@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:flutter_tour_app/constant/app_strings.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
