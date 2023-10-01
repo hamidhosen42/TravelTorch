@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_is_empty
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tour_app/constant/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:flutter_tour_app/services/firestore_services.dart';
 import 'package:flutter_tour_app/views/widgets/nav_home_categories.dart';
@@ -23,9 +24,11 @@ class NavHomeScreen extends StatefulWidget {
 
 class _NavHomeScreenState extends State<NavHomeScreen> {
   final List _carouselImages = [
-    'assets/images/cover-one.jpeg',
-    'assets/images/cover-two.jpeg',
-    'assets/images/cover-three.jpeg'
+    'assets/carouseimage/cover-one.jpg',
+    'assets/carouseimage/cover-two.jpg',
+    'assets/carouseimage/cover-three.jpg',
+    'assets/carouseimage/cover-four.jpg',
+    'assets/carouseimage/cover-five.jpg',
   ];
 
   final RxInt _currentIndex = 0.obs;
@@ -33,164 +36,186 @@ class _NavHomeScreenState extends State<NavHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 240, 229, 229),
+      backgroundColor: AppColors.scaffoldColor,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: 10.h),
-            AspectRatio(
-              aspectRatio: 3.5,
-              child: CarouselSlider(
-                options: CarouselOptions(
-                    height: 200.h,
+            // !-----------------CarouselSlider---------------------
+            StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+                return CarouselSlider(
+                  options: CarouselOptions(
+                    height: 180.h,
                     enlargeCenterPage: true,
                     autoPlay: true,
                     aspectRatio: 16 / 9,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    viewportFraction: 0.9,
+                    viewportFraction: 1,
                     onPageChanged: (val, carouselPageChangedReason) {
                       setState(() {
                         _currentIndex.value = val;
                       });
-                    }),
-                items: _carouselImages.map((image) {
-                  return Container(
-                    margin: EdgeInsets.only(left: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      image: DecorationImage(
-                        image: AssetImage(image),
-                        fit: BoxFit.cover,
+                    },
+                  ),
+                  items: _carouselImages.map((image) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: AssetImage(image),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
-                  );
-                }).toList(),
-              ),
+                    );
+                  }).toList(),
+                );
+              },
             ),
             SizedBox(height: 5.h),
             Obx(
               () => DotsIndicator(
-                dotsCount: _carouselImages.length,
+                dotsCount:
+                    _carouselImages.length == 0 ? 1 : _carouselImages.length,
                 position: _currentIndex.value.toDouble(),
               ),
             ),
+            // !---------------------All Package--------------
             navHomeCategories(
-              categoryName: "allPackage".tr,
-              onClick: () => Get.to(
+              "All Package",
+              () => Get.to(
                 () => SeeAllScreen(
                   compare: "phone",
                 ),
               ),
             ),
-            SizedBox(height: 5.h),
-            SizedBox(
-              height: 180.h,
-              child: FutureBuilder<QuerySnapshot>(
-                future: FirestoreServices.getForYouPackage(),
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("Error");
-                  }
-                  if (snapshot.hasData) {
-                    List<Map> items = parseData(snapshot.data);
-                    return forYou(items);
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  return Text("");
-                },
+            SizedBox(height: 10.h),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: SizedBox(
+                height: 180.h,
+                child: FutureBuilder<QuerySnapshot>(
+                  future: FirestoreServices.getForYouPackage(),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("Error");
+                    }
+                    if (snapshot.hasData) {
+                      List<Map> items = parseData(snapshot.data);
+                      return forYou(items);
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    return Text("");
+                  },
+                ),
               ),
             ),
 
             SizedBox(height: 15.h),
+            // !---------------------Top Place--------------
             navHomeCategories(
-              categoryName: "topPlace".tr,
-              onClick: () => Get.to(
+              "Top Place",
+              () => Get.to(
                 () => SeeAllScreen(
                   compare: "cost",
                 ),
               ),
             ),
-            SizedBox(height: 5.h),
-            SizedBox(
-              height: 80.h,
-              child: FutureBuilder<QuerySnapshot>(
-                future: FirestoreServices.getTopPlacePackage(),
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("Error");
-                  }
-                  if (snapshot.hasData) {
-                    List<Map> items = parseData(snapshot.data);
-                    return topPlaces(items);
-                  }
-                  return Center(child: CircularProgressIndicator());
-                },
+            SizedBox(height: 10.h),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: SizedBox(
+                height: 80.h,
+                child: FutureBuilder<QuerySnapshot>(
+                  future: FirestoreServices.getTopPlacePackage(),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("Error");
+                    }
+                    if (snapshot.hasData) {
+                      List<Map> items = parseData(snapshot.data);
+                      return topPlaces(items);
+                    }
+                    return Center(child: CircularProgressIndicator());
+                  },
+                ),
               ),
             ),
             SizedBox(height: 25.h),
+            // !---------------------Economy package--------------
             //Economy package
             navHomeCategories(
-              categoryName: "economy".tr,
-              onClick: () => Get.to(
+              "Economy",
+              () => Get.to(
                 () => SeeAllScreen3(),
               ),
             ),
-            SizedBox(height: 5.h),
-            SizedBox(
-              height: 180.h,
-              child: FutureBuilder<QuerySnapshot>(
-                future: FirestoreServices.getEconomyPackage(),
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("Error");
-                  }
-                  if (snapshot.hasData) {
-                    List<Map> items = parseData(snapshot.data);
-                    return economyPackage(items);
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  return Text("");
-                },
+            SizedBox(height: 10.h),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: SizedBox(
+                height: 180.h,
+                child: FutureBuilder<QuerySnapshot>(
+                  future: FirestoreServices.getEconomyPackage(),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("Error");
+                    }
+                    if (snapshot.hasData) {
+                      List<Map> items = parseData(snapshot.data);
+                      return economyPackage(items);
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    return Text("");
+                  },
+                ),
               ),
             ),
             //Luxury package
             SizedBox(height: 25),
+            // !---------------------Luxury--------------
             navHomeCategories(
-              categoryName: "luxury".tr,
-              onClick: () => Get.to(
+              "Luxury",
+              () => Get.to(
                 () => SeeAllScreen2(),
               ),
             ),
-            SizedBox(height: 5.h),
-            SizedBox(
-              height: 180.h,
-              child: FutureBuilder<QuerySnapshot>(
-                future: FirestoreServices.getLuxuryPackage(),
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("Error");
-                  }
-                  if (snapshot.hasData) {
-                    List<Map> items = parseData(snapshot.data);
-                    return luxuryPackage(items);
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  return Text("");
-                },
+            SizedBox(height: 10.h),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: SizedBox(
+                height: 180.h,
+                child: FutureBuilder<QuerySnapshot>(
+                  future: FirestoreServices.getLuxuryPackage(),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("Error");
+                    }
+                    if (snapshot.hasData) {
+                      List<Map> items = parseData(snapshot.data);
+                      return luxuryPackage(items);
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    return Text("");
+                  },
+                ),
               ),
             ),
             SizedBox(height: 50.h),

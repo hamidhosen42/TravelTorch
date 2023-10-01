@@ -2,26 +2,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
-Widget navHomeCategories({required String categoryName, required onClick}) {
+Widget navHomeCategories(String categoryName, onClick) {
   return Padding(
-    padding: EdgeInsets.only(left: 25.w, right: 25.w),
+    padding: const EdgeInsets.symmetric(horizontal: 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          categoryName,
-          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
-        ),
+            categoryName,
+            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
+          ),
         InkWell(
           onTap: onClick,
           child: Text(
-            "seeMore".tr,
-            style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF2BA018)),
+            "See More",
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600,color: Color(0xFF2BA018)),
           ),
         ),
       ],

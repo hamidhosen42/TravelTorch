@@ -51,8 +51,13 @@ class FirestoreServices {
         .snapshots();
   }
 
-    //for delete package:
- static deletePackage({required docId}) {
-   return firestore.collection('all-data').doc(docId).delete();
+  //for delete package:
+  static deletePackage({required docId}) {
+    return firestore.collection('all-data').doc(docId).delete();
+  }
+
+  //for tour guide package:
+  static tourGuidePackage() {
+    return firestore.collection('tour-guide').snapshots();
   }
 }

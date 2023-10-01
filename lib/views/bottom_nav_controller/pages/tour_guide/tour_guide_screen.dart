@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tour_app/constant/app_colors.dart';
 import 'package:get/get.dart';
-import 'package:flutter_tour_app/constant/constant.dart';
 
+import '../../../../services/firestore_services.dart';
 import 'details_screen.dart';
 
 class SelfTourScreen extends StatelessWidget {
@@ -14,9 +16,9 @@ class SelfTourScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        padding: EdgeInsets.symmetric(horizontal: 15.w),
         child: StreamBuilder(
-          stream: firestore.collection("tour-guide").snapshots(),
+          stream: FirestoreServices.tourGuidePackage(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if(!snapshot.hasData){
               return Center(child: CircularProgressIndicator());
@@ -27,6 +29,7 @@ class SelfTourScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
+                  childAspectRatio: 0.8
                 ),
                 itemCount: data.length,
                 itemBuilder: (context, index) {
@@ -34,7 +37,7 @@ class SelfTourScreen extends StatelessWidget {
                     onTap: ()=> Get.to(()=>SelfTourDetailsScreen(data: data[index])),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 212, 196, 196),
+                        color: Colors.grey[500],
                         borderRadius: BorderRadius.all(Radius.circular(7.r)),
                       ),
                       child: Column(
@@ -45,23 +48,31 @@ class SelfTourScreen extends StatelessWidget {
                               topLeft: Radius.circular(7.r),
                               topRight: Radius.circular(7.r),
                             ),
-                            child: Image.network(
-                              data[index]['gallery_img'][0],
-                              height: 145.h,
+                            child:CachedNetworkImage(
+                            imageUrl: data[index]['gallery_img'][0],
+                             fit: BoxFit.fill,
+                            height: 145.h,
                               width: double.infinity,
-                              fit: BoxFit.fill,
+                            filterQuality: FilterQuality.high,
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.blue,
+                              ),
                             ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
                           ),
                           Text(
                             data[index]['destination'],
                             style: TextStyle(
-                              fontSize: 18.sp,
-                              color: Color.fromARGB(255, 59, 80, 27),
-                              fontWeight: FontWeight.w500,
+                              fontSize: 20.sp,
+                              color: AppColors.textColor,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            "${data[index]['cost'].toString()} টাকা",
+                            "${data[index]['cost'].toString()} BD",
                             style:
                             TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
                           ),
