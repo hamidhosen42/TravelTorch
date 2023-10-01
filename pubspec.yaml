@@ -52,6 +52,7 @@ dependencies:
   connectivity_plus: 
   google_fonts:
   cached_network_image: 
+  dropdown_button2: 
 
 dev_dependencies:
   flutter_test:

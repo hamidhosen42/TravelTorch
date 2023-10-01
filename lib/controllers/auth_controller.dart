@@ -33,10 +33,11 @@ class AuthController extends GetxController {
         );
         var authCredential = userCredential.user;
         if (authCredential!.uid.isNotEmpty) {
-          Fluttertoast.showToast(msg: 'Registration Successfull');
+          Get.snackbar("Successful", "Registration Successfull");
           Get.to(() => HomeScreen());
         } else {
-          Fluttertoast.showToast(msg: 'Something is wrong!');
+          Get.snackbar("Error", "Something is wrong!",
+              backgroundColor: Colors.red, colorText: Colors.white);
         }
         UserModel userModel = UserModel(
           name: name,
@@ -51,19 +52,23 @@ class AuthController extends GetxController {
             .doc(userCredential.user!.uid)
             .set(userModel.toJson());
       } else {
-        Fluttertoast.showToast(msg: 'Please enter all the field');
+        Get.snackbar("Error", "Please enter all the field!",
+            backgroundColor: Colors.red, colorText: Colors.white);
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        Fluttertoast.showToast(msg: 'The password provided is too weak.');
+        Get.snackbar("Error", "The password provided is too weak.",
+            backgroundColor: Colors.red, colorText: Colors.white);
       } else if (e.code == 'email-already-in-use') {
-        Fluttertoast.showToast(
-            msg: 'The account already exists for that email.');
+        Get.snackbar("Error", "The account already exists for that email.",
+            backgroundColor: Colors.red, colorText: Colors.white);
       } else if (e.code == 'invalid-email') {
-        Fluttertoast.showToast(msg: 'Please write right email');
+        Get.snackbar("Error", "Please write right email",
+            backgroundColor: Colors.red, colorText: Colors.white);
       }
     } catch (e) {
-      Fluttertoast.showToast(msg: 'Error is: $e');
+      Get.snackbar("Error", "Error is: $e",
+          backgroundColor: Colors.red, colorText: Colors.white);
     }
   }
 

@@ -110,12 +110,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: AppStyle()
                     .textFieldDecoration("Enter your email", Icons.mail),
-                validator: (value) {
-                  if (!_validateEmail(value ?? '')) {
-                    return 'Enter your email';
-                  }
-                  return null;
-                },
               ),
               SizedBox(
                 height: 20.h,
