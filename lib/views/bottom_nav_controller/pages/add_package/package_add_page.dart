@@ -76,8 +76,8 @@ class _PackageAddPageState extends State<PackageAddPage> {
         // upload to database
         uploadToDB();
       } else {
-  Get.snackbar("Error", "Something is wrong!",
-              backgroundColor: Colors.red, colorText: Colors.white);
+        Get.snackbar("Error", "Something is wrong!",
+            backgroundColor: Colors.red, colorText: Colors.white);
       }
     } catch (e) {
       Fluttertoast.showToast(msg: "Failed");
@@ -108,7 +108,7 @@ class _PackageAddPageState extends State<PackageAddPage> {
               FieldValue.arrayUnion(imageUrlList), //we create image list
         },
       ).whenComplete(() {
-        Fluttertoast.showToast(msg: "Successfully uploaded.");
+        Get.snackbar("Successful", "Uploaded SUccessfully.");
       });
       Get.to(
         () => HomeScreen(),
@@ -121,7 +121,7 @@ class _PackageAddPageState extends State<PackageAddPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -135,31 +135,31 @@ class _PackageAddPageState extends State<PackageAddPage> {
                 customTextField(
                   "Phone Number".tr,
                   phoneController,
-                             TextInputType.number,
+                  TextInputType.number,
                   onlyRead: true,
                 ),
                 customTextField(
                   "Cost".tr,
                   _costController,
-                             TextInputType.number,
+                  TextInputType.number,
                   onlyRead: false,
                 ),
                 customTextField(
                   "Destination".tr,
                   _destinationController,
-                             TextInputType.text,
+                  TextInputType.text,
                   onlyRead: false,
                 ),
                 customTextField(
                   "Description".tr,
                   _descriptionController,
-                             TextInputType.text,
+                  TextInputType.text,
                   onlyRead: false,
                 ),
                 customTextField(
                   "Facilites".tr,
                   _facilityController,
-                             TextInputType.text,
+                  TextInputType.text,
                   maxline: 4,
                   onlyRead: false,
                 ),
@@ -188,7 +188,7 @@ class _PackageAddPageState extends State<PackageAddPage> {
                 ),
                 SizedBox(height: 10.h),
                 SizedBox(
-                height: multipleImages?.length != null ? 100 : 0,
+                  height: multipleImages?.length != null ? 100 : 0,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: multipleImages?.length ?? 0,
@@ -214,7 +214,7 @@ class _PackageAddPageState extends State<PackageAddPage> {
                 Obx(() {
                   return VioletButton(
                     isLoading: isLoading.value,
-                    title: "submit".tr,
+                    title: "Submit".tr,
                     onAction: () async {
                       if (_descriptionController.text.isEmpty ||
                           _descriptionController.text.length < 3) {
@@ -241,6 +241,7 @@ class _PackageAddPageState extends State<PackageAddPage> {
                     },
                   );
                 }),
+                  SizedBox(height: 30.h),
               ],
             ),
           ),

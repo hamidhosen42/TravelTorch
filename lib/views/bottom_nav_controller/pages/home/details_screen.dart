@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tour_app/constant/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:flutter_tour_app/views/widgets/details_heading_description.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -38,15 +40,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       viewportFraction: 1.0,
                       itemCount: widget.detailsData['list_images'].length,
                       itemBuilder: (context, index) {
-                        return Image.network(
-                          widget.detailsData['list_images'][0],
+                        return CachedNetworkImage(
+                  imageUrl:widget.detailsData['list_images'][0],
                           width: double.infinity,
                           fit: BoxFit.cover,
-                        );
+                  filterQuality: FilterQuality.high,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.blue,
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                );
                       },
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -64,11 +73,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               .make(),
                           15.h.heightBox,
                           detailsHeadingDescription(
-                            title: "description".tr,
+                            title: "Description".tr,
                             description: widget.detailsData['list_description'],
                           ),
                           detailsHeadingDescription(
-                            title: "facilites".tr,
+                            title: "Facilites".tr,
                             description: widget.detailsData['list_facilities'],
                           ),
                         ],
@@ -81,7 +90,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             Expanded(
               flex: 1,
               child: Container(
-                color: Colors.white,
+                color: AppColors.scaffoldColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -89,7 +98,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       widget.detailsData['list_owner_name'],
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 17.sp,
+                        fontSize: 20.sp,
                       ),
                     ),
                     Row(
@@ -102,6 +111,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             );
                           },
                           icon: Icon(Icons.call_outlined),
+                        ),
+                        SizedBox(
+                          width: 20.w,
                         ),
                         IconButton(
                           onPressed: () {

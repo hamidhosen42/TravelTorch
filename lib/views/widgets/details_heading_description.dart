@@ -17,6 +17,7 @@ Widget detailsHeadingDescription({required title, required description}) {
         padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 2.h),
         child: Text(
           description,
+          textAlign: TextAlign.justify,
           style: TextStyle(
             fontWeight: FontWeight.w300,
             fontSize: 17.sp,

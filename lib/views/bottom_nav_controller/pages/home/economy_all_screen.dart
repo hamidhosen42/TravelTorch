@@ -1,37 +1,35 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_typing_uninitialized_variables, unused_field
+// ignore_for_file: prefer_const_constructors
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:flutter_tour_app/constant/constant.dart';
 import 'package:flutter_tour_app/services/firestore_services.dart';
 import 'package:flutter_tour_app/views/bottom_nav_controller/pages/home/nav_home_screen.dart';
 
 import 'details_screen.dart';
 
-class SeeAllScreen2 extends StatefulWidget {
-  const SeeAllScreen2({
-    super.key,
-  });
+class EconomyAllScreen extends StatefulWidget {
+  const EconomyAllScreen({Key? key}) : super(key: key);
 
   @override
-  State<SeeAllScreen2> createState() => _SeeAllScreen2State();
+  State<EconomyAllScreen> createState() => _EconomyAllScreenState();
 }
 
-class _SeeAllScreen2State extends State<SeeAllScreen2> {
-  //collectionName
-  final CollectionReference _refference = firestore.collection('all-data');
+class _EconomyAllScreenState extends State<EconomyAllScreen> {
+
 
   //queryName
-  late Future<QuerySnapshot> _futureDataLuxuryPackage;
+  late Future<QuerySnapshot> _futureDataEconomyPackage;
 
   @override
   void initState() {
-    _futureDataLuxuryPackage = FirestoreServices.getLuxuryPackage();
+    _futureDataEconomyPackage = FirestoreServices.getEconomyPackage();
 
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +37,14 @@ class _SeeAllScreen2State extends State<SeeAllScreen2> {
       backgroundColor: Color.fromARGB(255, 223, 231, 229),
       appBar: AppBar(
         title: Text(
-          "seeAll".tr,
+         "All Economy".tr,
+         style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.symmetric(horizontal: 15.w),
         child: FutureBuilder<QuerySnapshot>(
-          future: _futureDataLuxuryPackage,
+          future: _futureDataEconomyPackage,
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.hasError) {
               return Text("Error");
@@ -65,20 +64,19 @@ class _SeeAllScreen2State extends State<SeeAllScreen2> {
 GridView forYouBuildGridview(List<Map<dynamic, dynamic>> itemList) {
   return GridView.builder(
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 2,
-      mainAxisSpacing: 10,
-      crossAxisSpacing: 10,
+       crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        childAspectRatio: 0.8
     ),
     itemCount: itemList.length,
     itemBuilder: (_, i) {
       Map thisItem = itemList[i];
       return InkWell(
-        onTap: () => Get.to(
-          () => DetailsScreen(detailsData: thisItem),
-        ),
+        onTap: ()=> Get.to(()=> DetailsScreen(detailsData: thisItem),),
         child: Container(
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 212, 196, 196),
+         color: Colors.grey[500],
             borderRadius: BorderRadius.all(
               Radius.circular(7.r),
             ),
@@ -91,19 +89,29 @@ GridView forYouBuildGridview(List<Map<dynamic, dynamic>> itemList) {
                   topLeft: Radius.circular(7.r),
                   topRight: Radius.circular(7.r),
                 ),
-                child: Image.network(
-                  thisItem['list_images'][0],
+                child:CachedNetworkImage(
+                  imageUrl: thisItem['list_images'][0],
                   height: 150.h,
                   width: double.infinity,
                   fit: BoxFit.fill,
+                  filterQuality: FilterQuality.high,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.blue,
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
-              Text(
-                thisItem['list_destination'],
-                style: TextStyle(
-                  fontSize: 24.sp,
-                  color: Color.fromARGB(255, 59, 80, 27),
-                  fontWeight: FontWeight.w500,
+              Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Text(
+                  thisItem['list_destination'],
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Color.fromARGB(255, 59, 80, 27),
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               Text(
@@ -120,3 +128,4 @@ GridView forYouBuildGridview(List<Map<dynamic, dynamic>> itemList) {
     },
   );
 }
+

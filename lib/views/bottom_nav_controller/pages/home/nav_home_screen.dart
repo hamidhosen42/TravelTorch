@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_is_empty
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -11,9 +12,9 @@ import 'package:flutter_tour_app/services/firestore_services.dart';
 import 'package:flutter_tour_app/views/widgets/nav_home_categories.dart';
 
 import 'details_screen.dart';
-import 'see_all_screen.dart';
-import 'see_all_screen_2.dart';
-import 'see_all_screen_3.dart';
+import 'all_package_screen.dart';
+import 'luxury_all_screen.dart';
+import 'economy_all_screen.dart';
 
 class NavHomeScreen extends StatefulWidget {
   const NavHomeScreen({super.key});
@@ -158,7 +159,7 @@ class _NavHomeScreenState extends State<NavHomeScreen> {
             navHomeCategories(
               "Economy",
               () => Get.to(
-                () => SeeAllScreen3(),
+                () => EconomyAllScreen(),
               ),
             ),
             SizedBox(height: 10.h),
@@ -191,7 +192,7 @@ class _NavHomeScreenState extends State<NavHomeScreen> {
             navHomeCategories(
               "Luxury",
               () => Get.to(
-                () => SeeAllScreen2(),
+                () => LuxuryAllScreen(),
               ),
             ),
             SizedBox(height: 10.h),
@@ -256,7 +257,7 @@ ListView forYou(List<Map<dynamic, dynamic>> items) {
             () => DetailsScreen(detailsData: thisItem),
           ),
           child: Container(
-            width: 100.w,
+            width: 130.w,
             height: 180.h,
             decoration: BoxDecoration(
               color: Color(0xFfC4C4C4),
@@ -272,15 +273,28 @@ ListView forYou(List<Map<dynamic, dynamic>> items) {
                     topLeft: Radius.circular(7.r),
                     topRight: Radius.circular(7.r),
                   ),
-                  child: Image.network(
-                    thisItem['list_images'][0],
-                    height: 115.h,
+                  child:CachedNetworkImage(
+                  imageUrl:thisItem['list_images'][0],
+                  height: 100.h,
                     fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.blue,
+                    ),
                   ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-                Text(
-                  thisItem['list_destination'],
-                  style: TextStyle(fontSize: 15.sp),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Center(
+                    child: Text(
+                      thisItem['list_destination'].length>22?thisItem['list_destination'].substring(0, 22) +'...':thisItem['list_destination'],
+                      style: TextStyle(fontSize: 15.sp),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
                 ),
                 Text(
                   "${thisItem['list_cost']} BDT",
@@ -342,7 +356,7 @@ ListView economyPackage(List<Map<dynamic, dynamic>> items) {
             () => DetailsScreen(detailsData: thisItem),
           ),
           child: Container(
-            width: 100.w,
+             width: 130.w,
             height: 180.h,
             decoration: BoxDecoration(
               color: Color(0xFfC4C4C4),
@@ -358,15 +372,28 @@ ListView economyPackage(List<Map<dynamic, dynamic>> items) {
                     topLeft: Radius.circular(7.r),
                     topRight: Radius.circular(7.r),
                   ),
-                  child: Image.network(
-                    thisItem['list_images'][0],
-                    height: 115.h,
+                  child:CachedNetworkImage(
+                  imageUrl:thisItem['list_images'][0],
+                  height: 100.h,
                     fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.blue,
+                    ),
                   ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-                Text(
-                  thisItem['list_destination'],
-                  style: TextStyle(fontSize: 15.sp),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Center(
+                    child: Text(
+                      thisItem['list_destination'].length>22?thisItem['list_destination'].substring(0, 22) +'...':thisItem['list_destination'],
+                      style: TextStyle(fontSize: 15.sp),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
                 ),
                 Text(
                   "${thisItem['list_cost']} BDT",
@@ -398,7 +425,7 @@ ListView luxuryPackage(List<Map<dynamic, dynamic>> items) {
             () => DetailsScreen(detailsData: thisItem),
           ),
           child: Container(
-            width: 100.w,
+             width: 130.w,
             height: 180.h,
             decoration: BoxDecoration(
               color: Color(0xFfC4C4C4),
@@ -414,15 +441,28 @@ ListView luxuryPackage(List<Map<dynamic, dynamic>> items) {
                     topLeft: Radius.circular(7.r),
                     topRight: Radius.circular(7.r),
                   ),
-                  child: Image.network(
-                    thisItem['list_images'][0],
-                    height: 115.h,
+                  child:CachedNetworkImage(
+                  imageUrl:thisItem['list_images'][0],
+                  height: 100.h,
                     fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.blue,
+                    ),
                   ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-                Text(
-                  thisItem['list_destination'],
-                  style: TextStyle(fontSize: 15.sp),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Center(
+                    child: Text(
+                      thisItem['list_destination'].length>22?thisItem['list_destination'].substring(0, 22) +'...':thisItem['list_destination'],
+                      style: TextStyle(fontSize: 15.sp),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
                 ),
                 Text(
                   "${thisItem['list_cost']} BDT",
