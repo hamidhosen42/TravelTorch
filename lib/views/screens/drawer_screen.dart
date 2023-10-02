@@ -42,12 +42,12 @@ class DrawerScreen extends StatelessWidget {
               ),
               SizedBox(height: 10.h),
               drawerItem(
-                itemName: 'privacy'.tr,
+                itemName: 'Privacy'.tr,
                 onClick: () => Get.to(() => PrivacyPolicyScreen()),
               ),
               SizedBox(height: 8.h),
               drawerItem(
-                itemName: 'faq'.tr,
+                itemName: 'Faq'.tr,
                 onClick: () => Get.to(
                   () => FaqScreen(),
                 ),

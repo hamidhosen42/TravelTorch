@@ -5,13 +5,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../constant/app_strings.dart';
+
 class PrivacyPolicyScreen extends StatelessWidget {
   const PrivacyPolicyScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("privacyPolicy".tr)),
+      appBar: AppBar(
+          title: Text(
+        "Privacy Policy".tr,
+        style: TextStyle(fontSize: 25.sp),
+      )),
       body: Padding(
         padding: EdgeInsets.all(18.h),
         child: SingleChildScrollView(
@@ -20,14 +26,15 @@ class PrivacyPolicyScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "intro".tr,
+                introEng.tr,
                 style: TextStyle(
                   color: Colors.black,
                 ),
+                textAlign: TextAlign.justify,
               ),
               10.h.heightBox,
               Text(
-                "heading".tr,
+                headingEng.tr,
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w800,
@@ -35,29 +42,28 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 ),
               ),
               15.h.heightBox,
-              customDescriptionText(title: 'title1',desc: "desc1"),
+              customDescriptionText(title: title1Eng, desc: desc1Eng),
               10.h.heightBox,
-              customDescriptionText(title: 'title2',desc: "desc2"),
+              customDescriptionText(title: title2Eng, desc: desc2Eng),
               10.h.heightBox,
-              customDescriptionText(title: 'title3',desc: "desc3"),
+              customDescriptionText(title: title3Eng, desc: desc3Eng),
               10.h.heightBox,
-              customDescriptionText(title: 'title4',desc: "desc4"),
+              customDescriptionText(title: title4Eng, desc: desc4Eng),
               10.h.heightBox,
-              customDescriptionText(title: 'title5',desc: "desc5"),
+              customDescriptionText(title: title5Eng, desc: desc5Eng),
               10.h.heightBox,
-              customDescriptionText(title: 'title6',desc: "desc6"),
+              customDescriptionText(title: title6Eng, desc: desc6Eng),
               10.h.heightBox,
-              customDescriptionText(title: 'title6',desc: "desc6"),
+              customDescriptionText(title: title7Eng, desc: desc7Eng),
               10.h.heightBox,
-              customDescriptionText(title: 'title7',desc: "desc7"),
+              customDescriptionText(title: title8Eng, desc: desc8Eng),
               10.h.heightBox,
-              customDescriptionText(title: 'title8',desc: "desc8"),
+              customDescriptionText(title: title8Eng, desc: desc8Eng),
               10.h.heightBox,
-               Text(
-                "conclusion".tr,
-                style: TextStyle(
-                  color: Colors.black,
-                ),
+              Text(
+                conclusionEng.tr,
+                style: TextStyle(color: Colors.black, fontSize: 16.sp),
+                textAlign: TextAlign.justify,
               ),
             ],
           ),
@@ -88,6 +94,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               fontWeight: FontWeight.w300,
               fontSize: 16.sp,
             ),
+            textAlign: TextAlign.justify,
           ),
         ),
       ],
