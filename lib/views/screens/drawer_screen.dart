@@ -45,7 +45,7 @@ class DrawerScreen extends StatelessWidget {
                 itemName: 'Privacy'.tr,
                 onClick: () => Get.to(() => PrivacyPolicyScreen()),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 10.h),
               drawerItem(
                 itemName: 'Faq'.tr,
                 onClick: () => Get.to(
