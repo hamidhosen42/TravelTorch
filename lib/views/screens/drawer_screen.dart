@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tour_app/constant/app_colors.dart';
+import 'package:flutter_tour_app/constant/app_strings.dart';
 import 'package:get/get.dart';
 import 'package:flutter_tour_app/controllers/language_controller.dart';
 import 'package:flutter_tour_app/views/drawer_page/faq_screen.dart';
@@ -20,33 +22,25 @@ class DrawerScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [
-            Colors.white.withOpacity(.10),
-            Colors.orangeAccent.withOpacity(.10),
-            Colors.white.withOpacity(.10),
-            Colors.red.withOpacity(.10),
-          ]),
-        ),
+        color: AppColors.scaffoldColor,
         child: Padding(
           padding: EdgeInsets.only(left: 20.w, top: 50.h, bottom: 20.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "appName".tr,
-                style: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.w500),
+              SizedBox(
+                height: 10.h,
               ),
               Text(
-                "slogan".tr,
-                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w300),
+               appName,
+                style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w500),
               ),
               SizedBox(height: 40.h),
               drawerItem(
-                itemName: 'support'.tr,
+                itemName: 'Support'.tr,
                 onClick: () => Get.to(() => SupportScreen()),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 10.h),
               drawerItem(
                 itemName: 'privacy'.tr,
                 onClick: () => Get.to(() => PrivacyPolicyScreen()),
