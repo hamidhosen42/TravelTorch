@@ -17,8 +17,8 @@ flutter run
 ### [Firebase](https://console.firebase.google.com/u/5/project/flutter-tour-app-dae95/firestore/data/~2Fall-data~2F865fly0ssAC4yr4OCfJ6)
 ### [APK](https://github.com/hamidhosen42/Flutter-TravelTorch-App/blob/main/lib/TravelTorch.apk) 
 
-```
 ### flutter packages:
+```
 - cupertino_icons: ^1.0.2
 - flutter_screenutil:
 - get:
@@ -40,8 +40,8 @@ flutter run
 - dropdown_button2:
 ```
 
-```
 ### The main features of our app are:
+```
 - Login: Allows existing users to access their accounts by providing valid credentials.
 - Register: Enables new users to create an account to utilize the app's features.
 - See All Packages: Displays a comprehensive list of all available travel packages.
