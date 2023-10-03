@@ -35,21 +35,25 @@ flutter run
 - dropdown_button2: 
 
 ### The main features of our app are:
-- Login
-- Register
-- See All Packages
-- See top packages
-- See economy packages
-- See luxury packages
-- Select package
-- View package
-- Contact authority
-- Confirm tour
-- See tour guide
-- Upload packages (Admin can review )
-- Logout
-- Internet Checker
-- Support
-- Privacy
-- Fag
-- Edit Profile Information
+- Login: Allows existing users to access their accounts by providing valid credentials.
+- Register: Enables new users to create an account to utilize the app's features.
+- See All Packages: Displays a comprehensive list of all available travel packages.
+- See Top Packages: Highlights the most popular and highly-rated travel packages.
+- See Economy Packages: Showcases travel packages that are budget-friendly and cost-effective.
+- See Luxury Packages: Exhibits premium travel packages offering upscale experiences.
+- Select Package: Allows users to choose a specific travel package for further details.
+- View Package: Provides detailed information on the selected travel package, including itinerary, price, and more.
+- Contact Authority: Gives users an avenue to communicate directly with the app's management or travel agency for inquiries.
+- Confirm Tour: Lets users finalize and book their chosen travel package.
+- See Tour Guide: Introduces users to their assigned tour guide, including credentials and contact details.
+- Upload Packages (Admin review): Allows authorized personnel (like travel agencies) to upload new packages, which can be reviewed and approved by the app's admin.
+- Logout: Ensures users can securely exit their accounts.
+- Internet Checker: Monitors and notifies users of their internet connection status.
+- Support: Provides assistance and solutions for any technical issues or queries users may encounter.
+- Privacy: Outlines the app's data collection, storage, and usage policies to ensure users' personal information is protected.
+- FAQ: Offers answers to frequently asked questions about the app and its features.
+- Edit Profile Information: Allows users to update and modify their personal account details.
+
+### App UI :
+![image](https://github.com/hamidhosen42/Flutter-TravelTorch-App/assets/68488154/8223fe9c-16dc-47f2-9dc2-0ed15dfb74d3)
+
