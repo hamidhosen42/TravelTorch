@@ -8,11 +8,14 @@
 ## Development Setup
 Clone the repository and run the following commands:
 ```
+git clone https://github.com/hamidhosen42/Flutter-TravelTorch-App.git
 flutter pub get
 flutter run
 ```
 ### [Firebase](https://console.firebase.google.com/u/5/project/flutter-tour-app-dae95/firestore/data/~2Fall-data~2F865fly0ssAC4yr4OCfJ6)
 ### [APK](https://github.com/hamidhosen42/Flutter-TravelTorch-App/blob/main/lib/TravelTorch.apk) 
+
+```
 ### flutter packages:
 - cupertino_icons: ^1.0.2
 - flutter_screenutil:
@@ -32,8 +35,10 @@ flutter run
 - connectivity_plus:
 - google_fonts:
 - cached_network_image:
-- dropdown_button2: 
+- dropdown_button2:
+```
 
+```
 ### The main features of our app are:
 - Login: Allows existing users to access their accounts by providing valid credentials.
 - Register: Enables new users to create an account to utilize the app's features.
@@ -53,6 +58,7 @@ flutter run
 - Privacy: Outlines the app's data collection, storage, and usage policies to ensure users' personal information is protected.
 - FAQ: Offers answers to frequently asked questions about the app and its features.
 - Edit Profile Information: Allows users to update and modify their personal account details.
+```
 
 ### App UI :
 ![image](https://github.com/hamidhosen42/Flutter-TravelTorch-App/assets/68488154/8223fe9c-16dc-47f2-9dc2-0ed15dfb74d3)
