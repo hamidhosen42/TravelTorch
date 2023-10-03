@@ -109,6 +109,6 @@ class AuthController extends GetxController {
   signOut() async {
     await firebaseAuth.signOut();
     Fluttertoast.showToast(msg: 'Log out');
-    Get.offAll(() => SignInScreen());
+    Get.to(() => SignInScreen());
   }
 }

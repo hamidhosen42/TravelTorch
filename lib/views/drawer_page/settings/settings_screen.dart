@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable
+// ignore_for_file: prefer_const_constructors, must_be_immutable, use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +9,8 @@ import 'package:flutter_tour_app/constant/constant.dart';
 import 'package:flutter_tour_app/controllers/auth_controller.dart';
 import 'package:flutter_tour_app/services/firestore_services.dart';
 import 'package:flutter_tour_app/views/drawer_page/settings/profile_screen.dart';
+
+import '../../auth/login_screen.dart';
 
 class SettingScreen extends StatelessWidget {
   SettingScreen({Key? key}) : super(key: key);
@@ -34,7 +36,11 @@ class SettingScreen extends StatelessWidget {
             icon: Icon(Icons.edit),
           ),
           TextButton(
-            onPressed: () => authController.signOut(),
+            onPressed: () async{
+              await firebaseAuth.signOut();
+               Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => SignInScreen()));
+            },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(

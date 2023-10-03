@@ -20,13 +20,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 1), () {
-      // ! ---To go to the next screen and cancel all previous routes (Get.offAll)
+    Future.delayed(const Duration(seconds: 5), () {
+      // ! ---To go to the next screen and cancel all previous routes (Get.to)
       firebaseAuth.authStateChanges().listen((event) {
         if (event == null && mounted) {
-          Get.offAll(() => SignInScreen());
+          Get.to(() => SignInScreen());
         } else {
-          Get.offAll(() => HomeScreen());
+          Get.to(() => HomeScreen());
         }
       });
     });
