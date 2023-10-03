@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter_tour_app/constant/constant.dart';
 import 'package:flutter_tour_app/controllers/profile_controller.dart';
-import 'package:flutter_tour_app/views/styles.dart';
 import 'package:flutter_tour_app/views/widgets/violetButton.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -21,22 +21,31 @@ class ProfileScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
+          Center(
+              child: Image.asset(
+                "assets/logo/logo.png",
+                height: 250.h,
+                width: 250.h,
+              ),
+            ),
           formField(
             controller: controller.nameController,
             inputType: TextInputType.name,
             hint: "name",
           ),
+          SizedBox(height: 10),
           formField(
-            controller: controller.emailController,
-            inputType: TextInputType.emailAddress,
-            hint: "email",
-            readOnly: true
-          ),
+              controller: controller.emailController,
+              inputType: TextInputType.emailAddress,
+              hint: "email",
+              readOnly: true),
+          SizedBox(height: 10),
           formField(
             controller: controller.phoneController,
             inputType: TextInputType.phone,
             hint: "phone",
           ),
+          SizedBox(height: 10),
           formField(
             controller: controller.addressController,
             inputType: TextInputType.text,
@@ -45,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
           SizedBox(height: 15),
           VioletButton(
             isLoading: false,
-            title: "update".tr,
+            title: "Update".tr,
             onAction: () {
               controller.updateData(uid: firebaseAuth.currentUser!.uid);
             },
@@ -59,10 +68,13 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("profile".tr),
+        title: Text(
+          "Profile".tr,
+          style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(20.0),
         child: StreamBuilder(
           stream: firestore
               .collection('users')
@@ -85,10 +97,21 @@ class ProfileScreen extends StatelessWidget {
 }
 
 Widget formField({controller, inputType, hint, readOnly = false}) {
-  return TextFormField(
+  return TextField(
     controller: controller,
-    keyboardType: inputType,
+    textAlign: TextAlign.justify,
     readOnly: readOnly,
-    decoration: AppStyles().textFieldDecoration(hint),
+    keyboardType: inputType,
+    decoration: InputDecoration(
+      border: OutlineInputBorder(),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.black, width: 1.0),
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.black, width: 1.0),
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      ),
+    ),
   );
 }

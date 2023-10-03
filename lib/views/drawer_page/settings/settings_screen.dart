@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tour_app/constant/app_colors.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter_tour_app/constant/constant.dart';
 import 'package:flutter_tour_app/controllers/auth_controller.dart';
@@ -40,8 +39,10 @@ class SettingScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Logout".tr,
-                style:
-                    TextStyle(color: Colors.black,fontSize: 18.sp ,fontWeight: FontWeight.w600),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -99,35 +100,47 @@ class SettingScreen extends StatelessWidget {
                       snapshot.data!.docs.length,
                       (index) {
                         var data = snapshot.data!.docs[index];
-                        return ListTile(
-                          leading: Image.network(
-                            "${data['gallery_img'][0]}",
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.fill,
-                          ),
-                          title: Text("${data['destination']}"),
-                          subtitle: Text("${data['cost']}BDT"),
-                          trailing: PopupMenuButton(
-                            itemBuilder: (context) => [
-                              PopupMenuItem(
-                                child: InkWell(
-                                  onTap: () {
-                                    FirestoreServices.deletePackage(
-                                        docId: data.id);
-                                    Fluttertoast.showToast(msg: "delete");
-                                    Get.back();
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.delete),
-                                      SizedBox(width: 10.w),
-                                      Text("delete".tr),
-                                    ],
+                        return Card(
+                                                  color: AppColors.scaffoldColor,
+                          child: ListTile(
+                            leading:  ClipRRect(
+                               borderRadius: BorderRadius.circular(
+                                      10), // Adjust the radius as needed
+                              child: Image.network(
+                                data['gallery_img'][0],
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                            title: Text("${data['destination']}",style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.bold)),
+                            subtitle: Text("${data['cost']}BDT", style: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w700)),
+                            trailing: PopupMenuButton(
+                              itemBuilder: (context) => [
+                                PopupMenuItem(
+                                  child: InkWell(
+                                    onTap: () {
+                                      FirestoreServices.deletePackage(
+                                          docId: data.id);
+                                      Get.snackbar(
+                                          "Successful", "Delete SUccessfully.");
+                                      Get.back();
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.delete),
+                                        SizedBox(width: 10.w),
+                                        Text("delete".tr),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         );
                       },
