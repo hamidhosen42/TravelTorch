@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tour_app/constant/app_colors.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter_tour_app/constant/constant.dart';
@@ -25,8 +26,8 @@ class SettingScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          "settings".tr,
-          style: TextStyle(color: Colors.black),
+          "Settings".tr,
+          style: TextStyle(color: AppColors.textColor),
         ),
         actions: [
           IconButton(
@@ -38,9 +39,9 @@ class SettingScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "logout".tr,
+                "Logout".tr,
                 style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+                    TextStyle(color: Colors.black,fontSize: 18.sp ,fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -73,10 +74,10 @@ class SettingScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "package".tr,
+                  "Package".tr,
                   style: TextStyle(
                     fontSize: 18.sp,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
