@@ -63,6 +63,7 @@ flutter run
 ```
 
 ### App UI :
-![image](https://github.com/hamidhosen42/Flutter-TravelTorch-App/assets/68488154/8223fe9c-16dc-47f2-9dc2-0ed15dfb74d3)
-![image](https://github.com/hamidhosen42/Flutter-TravelTorch-App/assets/68488154/45773ec5-c7e2-40a9-8a33-f7830e9543ab)
+![TravelTorch](https://github.com/hamidhosen42/TravelTorch/assets/68488154/18331aa0-f2e5-49b7-b7ef-9d11fa5664d0)
+![Screenshot 2023-11-08 005426](https://github.com/hamidhosen42/TravelTorch/assets/68488154/3d60db05-e1c0-4865-ab65-0f1ea6255fa5)
+
 
